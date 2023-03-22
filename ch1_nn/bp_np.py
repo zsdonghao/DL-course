@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jul  2 14:49:06 2019
 
-@author: Yhq
-"""
-
-# 使用numpy实现反向传播算法
-# 作业内容：1. 更改loss函数，更改网络结构，更改激活函数
-#          2. 更改优化器
+# 使用numpy实现反向传播算法示例
+# 作业内容：1. 阅读并理解代码
+#          2. 修改np_mnist_template.py，更改loss函数、网络结构、激活函数，完成训练MLP网络识别手写数字MNIST数据集
 
 import numpy as np
 
