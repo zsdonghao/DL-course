@@ -1,2 +1,3 @@
 mnist/
 ch1_nn/np_mnist.py
+ch2_cnn/cifar10_cnn_torch.py
