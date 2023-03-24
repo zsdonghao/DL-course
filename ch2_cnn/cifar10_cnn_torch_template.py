@@ -40,12 +40,13 @@ test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 # 定义模型
 class Net(nn.Module):
     '''
-    定义卷积神经网络,6个卷积层,3个全连接层
+    定义卷积神经网络,3个卷积层,2个全连接层
     '''
     pass
 
 # 实例化模型
 model = Net()
+model = model.cuda()
 
 # 定义损失函数和优化器
 criterion = None
@@ -56,6 +57,9 @@ for epoch in range(num_epochs):
     # 训练模式
     model.train()
     for i, (images, labels) in enumerate(train_loader):
+        images = images.cuda()
+        labels = labels.cuda()
+
         # 前向传播
         outputs = model(images)
         loss = criterion(outputs, labels)
@@ -65,7 +69,25 @@ for epoch in range(num_epochs):
         loss.backward()
         optimizer.step()
 
+        accuracy = (outputs.argmax(1) == labels).float().mean()
+
         # 打印训练信息
         if (i + 1) % 100 == 0:
-            print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'
-                  .format(epoch + 1, num_epochs, i + 1, len(train_dataset) // batch_size, loss.item()))
+            print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}, Accuracy: {:.2f}%'
+                    .format(epoch + 1, num_epochs, i + 1, len(train_loader), loss.item(), accuracy.item() * 100))
+
+    # 测试模式
+    model.eval()
+    with torch.no_grad():
+        correct = 0
+        total = 0
+        for images, labels in test_loader:
+            images = images.cuda()
+            labels = labels.cuda()
+
+            outputs = model(images)
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+
+        print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))

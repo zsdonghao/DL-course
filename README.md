@@ -3,8 +3,9 @@
 ## 第一课 神经网络基础
 ### 代码文件说明
 * `ch1_nn/examples.py` 课堂演示代码，主要用来学习参考 
-* `ch1_nn/bp_np.py` 课后作业代码, 使用numpy实现BP算法
-* `ch1_nn/mnist_mlp.py` 课后作业代码, MNIST手写数字分类  
+* `ch1_nn/bp_np.py` 课后作业代码, 使用numpy实现BP算法,主要用来学习参考
+* `ch1_nn/np_mnist_mlp.py` 课后作业代码, 使用numpy实现MNIST手写数字分类
+* `ch1_nn/mnist_mlp.py` 课后作业代码, pytorch 实现MNIST手写数字分类  
 ### 数据集文件夹结构
 解压`ch1_nn/mnist.zip`后，文件夹结构如下：
 ```

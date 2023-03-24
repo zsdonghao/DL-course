@@ -1,9 +1,8 @@
 # 第一课作业
 # 使用Pytorch训练MNIST数据集的MLP模型
-# 运行、阅读并理解mnist_mlp.py,修改网络结构和参数，增加隐藏层，观察训练效果
-# 使用Adam等不同优化器，添加Dropout层，观察训练效果
+# 1. 运行、阅读并理解mnist_mlp_template.py,修改网络结构和参数，增加隐藏层，观察训练效果
+# 2. 使用Adam等不同优化器，添加Dropout层，观察训练效果
 # 要求：10个epoch后测试集准确率达到98%以上
-
 
 # 导入相关的包
 import torch
@@ -15,9 +14,6 @@ from torch.utils.data import Dataset, DataLoader
 import numpy as np
 
 from matplotlib import pyplot as plt
-
-torch.seed = 9999
-np.random.seed(9999)
 
 # 加载数据集,numpy格式
 X_train = np.load('./mnist/X_train.npy')
@@ -59,28 +55,17 @@ class Net(nn.Module):
         super(Net, self).__init__()
         self.fc1 = nn.Linear(784, 800)
         self.fc2 = nn.Linear(800, 800)
-        self.fc3 = nn.Linear(800, 800)
-        self.fc4 = nn.Linear(800, 800)
-        self.fc5 = nn.Linear(800, 10)
-        self.dropout = nn.Dropout(0.2)
+        self.fc3 = nn.Linear(800, 10)
 
 
     def forward(self, x):
         x = x.view(-1, 784)
         
         x = F.relu(self.fc1(x))
-        x = self.dropout(x)
 
         x = F.relu(self.fc2(x))
-        x = self.dropout(x)
 
-        x = F.relu(self.fc3(x))
-        x = self.dropout(x)
-
-        x = F.relu(self.fc4(x))
-        x = self.dropout(x)
-
-        x = self.fc5(x)
+        x = self.fc3(x)
 
         return F.log_softmax(x, dim=1)
 
@@ -90,7 +75,7 @@ model.to(device='cuda')
 # 定义损失函数
 criterion = nn.CrossEntropyLoss()
 # 定义优化器
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+optimizer = optim.SGD(model.parameters(), lr=0.001)
 
 # 定义数据加载器
 train_loader = DataLoader(MNISTDataset(X_train, y_train), \

@@ -1,3 +1,12 @@
 mnist/
 ch1_nn/np_mnist.py
 ch2_cnn/cifar10_cnn_torch.py
+ch2_cnn/data/cifar-10-python.tar.gz
+ch2_cnn/data/cifar-10-batches-py/batches.meta
+ch2_cnn/data/cifar-10-batches-py/data_batch_1
+ch2_cnn/data/cifar-10-batches-py/data_batch_2
+ch2_cnn/data/cifar-10-batches-py/data_batch_3
+ch2_cnn/data/cifar-10-batches-py/data_batch_4
+ch2_cnn/data/cifar-10-batches-py/data_batch_5
+ch2_cnn/data/cifar-10-batches-py/test_batch
+ch1_nn/mnist_mlp.py
