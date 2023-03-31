@@ -21,6 +21,7 @@ b1 = torch.tensor(0.5)
 
 # 计算有偏置的矩阵乘法
 z1 = torch.matmul(x, w)+b1
+# z1 = torch.Tensor([[0.7000]])
 
 print("Z:\n", z1, "\nShape", z1.shape)
 
@@ -39,6 +40,7 @@ print("W:\n", w, "\nShape", w.shape)
 b2 = torch.tensor([0.5, 0.4])
 
 z2 = torch.matmul(x, w)+b2
+# z2 = torch.Tensor([[0.7000, 1.3500]])
 
 print("Z:\n", z2, "\nShape", z2.shape)
 

@@ -71,7 +71,8 @@ class Net(nn.Module):
 
 # 实例化模型
 model = Net()
-model.to(device='cuda')
+# model.to(device='cuda')
+
 # 定义损失函数
 criterion = nn.CrossEntropyLoss()
 # 定义优化器
@@ -99,7 +100,8 @@ for epoch in range(EPOCHS):
     correct_train = 0
 
     for batch_idx, (data, target) in enumerate(train_loader):
-        data, target = data.to(device='cuda'), target.to(device='cuda')
+        # data, target = data.to(device='cuda'), target.to(device='cuda')
+
         # 梯度清零
         optimizer.zero_grad()
         # 前向计算
@@ -136,7 +138,7 @@ for epoch in range(EPOCHS):
     correct = 0
     with torch.no_grad():
         for data, target in val_loader:
-            data, target = data.to(device='cuda'), target.to(device='cuda')
+            # data, target = data.to(device='cuda'), target.to(device='cuda')
             
             output = model(data)
             val_loss.append(criterion(output, target).item()) # sum up batch loss

@@ -10,3 +10,16 @@ ch2_cnn/data/cifar-10-batches-py/data_batch_4
 ch2_cnn/data/cifar-10-batches-py/data_batch_5
 ch2_cnn/data/cifar-10-batches-py/test_batch
 ch1_nn/mnist_mlp.py
+ch1_nn/作业说明.docx
+ch1_nn/作业包ch1_nn.zip
+.gitignore
+t.json
+*.pyc
+ch1_nn/答案包ch1_nn.zip
+.gitignore
+ch3_cv/data/imgs_celebrity/姜文_1021999_m/info.json
+ch3_cv/data/imgs_celebrity/廖凡_1007401_m/info.json
+ch3_cv/data/imgs_celebrity/葛优_1000905_m/info.json
+ch3_cv/facial_utils.py
+ch3_cv/test_face_recog.py
+ch3_cv/register_face.py
